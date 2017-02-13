@@ -1,0 +1,24 @@
+{
+  "name": "vue-todomvc-tsx",
+  "version": "1.0.0",
+  "description": "TodoMVC implementation with Vue.js and vue-typed-for-tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimamula/vue-todomvc-tsx.git"
+  },
+  "author": "kimamula",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kimamula/vue-todomvc-tsx/issues"
+  },
+  "homepage": "https://github.com/kimamula/vue-todomvc-tsx#readme",
+  "devDependencies": {
+    "typescript": "^2.2.0-dev.20170213"
+  },
+  "dependencies": {
+    "vue-typed-for-tsx": "git+ssh://git@github.com/kimamula/vue-typed-for-tsx.git"
+  }
+}
