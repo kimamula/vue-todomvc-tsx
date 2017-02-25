@@ -14,12 +14,16 @@ export interface Props {
   }
 }
 
-@Component<Props>({ props: { todo: null, todoReducer: null } })
+@Component<Props>({
+  props: { todo: null, todoReducer: null },
+  directives: {
+    'todo-focus': (el, binding) => binding.value && el.focus(),
+    'todo-checked': (el: HTMLInputElement, binding) => el.checked = binding.value
+  }
+})
 export default class TodoItem extends Vue<Props> {
   editText = ''
   editing = false
-  toggle: HTMLInputElement
-  input: HTMLInputElement
 
   render(h: CreateElement) {
     return (
@@ -28,7 +32,7 @@ export default class TodoItem extends Vue<Props> {
           <input
             class='toggle'
             type='checkbox'
-            checked={this.todo.completed}
+            v-todo-checked={this.todo.completed}
             onChange={() => this.handleToggle()}
           />
           <label onDblclick={() => this.handleEdit()}>
@@ -42,19 +46,10 @@ export default class TodoItem extends Vue<Props> {
           onBlur={() => this.handleSubmit()}
           onChange={(event: Event) => this.handleChange(event)}
           onKeydown={(event: KeyboardEvent) => this.handleKeyDown(event)}
+          v-todo-focus={this.editing}
         />
       </li>
     )
-  }
-
-  mounted() {
-    this.toggle = document.querySelector(`._${this.todo.id} .toggle`) as HTMLInputElement
-    this.input = document.querySelector(`._${this.todo.id} .edit`) as HTMLInputElement
-  }
-
-  updated() {
-    this.toggle.checked = this.todo.completed
-    this.editing && this.input.focus()
   }
 
   handleSubmit() {
