@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "TodoMVC implementation with Vue.js and vue-typed-for-tsx",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "cp ./typings/director.d.ts ./node_modules/director/index.d.ts && cp ./typings/vue-server-renderer.d.ts ./node_modules/vue-server-renderer/index.d.ts && cp ./node_modules/todomvc-common/base.js ./static/todomvc-common.js && cp ./node_modules/todomvc-common/base.css ./static/todomvc-common.css && cp ./node_modules/todomvc-app-css/index.css ./static/todomvc-app-css.css && cp ./node_modules/director/build/director.min.js ./static/director.min.js",
+    "build": "tsc && babel src -d src && webpack",
+    "start": "node ./src/server"
   },
   "repository": {
     "type": "git",
@@ -15,10 +17,27 @@
     "url": "https://github.com/kimamula/vue-todomvc-tsx/issues"
   },
   "homepage": "https://github.com/kimamula/vue-todomvc-tsx#readme",
+  "babel": {
+    "plugins": [
+      "transform-vue-jsx"
+    ]
+  },
   "devDependencies": {
-    "typescript": "^2.2.0-dev.20170213"
+    "@types/node": "^7.0.5",
+    "@types/react": "^15.0.11",
+    "babel-cli": "^6.23.0",
+    "babel-helper-vue-jsx-merge-props": "^2.0.2",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.3.0",
+    "typescript": "^2.2.1",
+    "webpack": "^2.2.1"
   },
   "dependencies": {
-    "vue-typed-for-tsx": "git+ssh://git@github.com/kimamula/vue-typed-for-tsx.git"
+    "director": "^1.2.8",
+    "todomvc-app-css": "^2.0.6",
+    "todomvc-common": "^1.0.3",
+    "tslib": "^1.5.0",
+    "vue-server-renderer": "^2.1.10",
+    "vue-typed-for-tsx": "git+https://github.com/kimamula/vue-typed-for-tsx.git"
   }
 }
