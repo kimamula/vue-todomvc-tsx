@@ -3,7 +3,7 @@ import Visibility from '../models/Visibility'
 import { pluralize } from '../utils'
 import { CreateElement } from 'vue'
 
-export interface Props {
+interface Props {
   allCount: number
   activeCount: number
   visibility: Visibility

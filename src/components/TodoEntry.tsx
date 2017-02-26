@@ -3,7 +3,7 @@ import { CreateElement } from 'vue'
 
 const ENTER_KEY = 13
 
-export interface Props {
+interface Props {
   todoReducer: {
     add: (title: string) => void
   }

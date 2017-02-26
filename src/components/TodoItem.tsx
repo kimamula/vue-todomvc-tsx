@@ -5,7 +5,7 @@ import { CreateElement } from 'vue'
 const ESCAPE_KEY = 27
 const ENTER_KEY = 13
 
-export interface Props {
+interface Props {
   todo: Todo
   todoReducer: {
     remove: (id: string) => void
@@ -14,17 +14,23 @@ export interface Props {
   }
 }
 
-@Component<Props>({
+interface Data {
+  editText: string
+  editing: boolean
+}
+
+@Component<Props, Data>({
   props: { todo: null, todoReducer: null },
   directives: {
     'todo-focus': (el, binding) => binding.value && el.focus(),
     'todo-checked': (el: HTMLInputElement, binding) => el.checked = binding.value
-  }
+  },
+  data: () => ({
+    editText: '',
+    editing: false
+  })
 })
-export default class TodoItem extends Vue<Props> {
-  editText = ''
-  editing = false
-
+export default class TodoItem extends Vue<Props, Data> {
   render(h: CreateElement) {
     return (
       <li class={{ completed: this.todo.completed, editing: this.editing, [`_${this.todo.id}`]: true }}>

@@ -13,11 +13,21 @@ interface Props {
   initialTodos: Todo[]
   initialVisibility: Visibility
 }
+interface Data {
+  visibility: Visibility
+  todos: Todo[]
+}
 
-@Component<Props>({ props: { initialTodos: null, initialVisibility: null } })
-export default class TodoApp extends Vue<Props> {
-  visibility = this.initialVisibility
-  todos = this.initialTodos
+@Component<Props, Data>({
+  props: { initialTodos: null, initialVisibility: null },
+  data: function() {
+    return {
+      visibility: this.initialVisibility,
+      todos: this.initialTodos
+    }
+  }
+})
+export default class TodoApp extends Vue<Props, Data> {
   todoReducer: TodoReducer
 
   get activeCount(): number {

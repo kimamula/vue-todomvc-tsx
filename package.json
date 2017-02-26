@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "@types/node": "^7.0.5",
-    "@types/react": "^15.0.11",
     "babel-cli": "^6.23.0",
     "babel-helper-vue-jsx-merge-props": "^2.0.2",
     "babel-plugin-syntax-jsx": "^6.18.0",
@@ -36,8 +35,8 @@
     "director": "^1.2.8",
     "todomvc-app-css": "^2.0.6",
     "todomvc-common": "^1.0.3",
-    "tslib": "^1.5.0",
-    "vue-server-renderer": "^2.1.10",
+    "tslib": "^1.6.0",
+    "vue-server-renderer": "^2.2.0",
     "vue-typed-for-tsx": "git+https://github.com/kimamula/vue-typed-for-tsx.git"
   }
 }

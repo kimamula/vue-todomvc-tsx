@@ -4,7 +4,7 @@ import TodoItem from './TodoItem'
 import Visibility from '../models/Visibility'
 import { CreateElement } from 'vue'
 
-export interface Props {
+interface Props {
   activeCount: number
   visibility: Visibility
   todos: Todo[]
